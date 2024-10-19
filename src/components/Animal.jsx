@@ -1,10 +1,15 @@
 import { data } from "../utils/constants.js";
 
 function Animal({ selectedAnimal }) {
-  const animal = data.find((item) => {
-    return item.name == selectedAnimal;
+  let animal = data.find((item) => {
+    return item.name === selectedAnimal;
   });
+  // console.log(animal.image);
 
+  animal = animal?.image ? animal : data.find((item) => {
+    return item.name == "default";
+  })
+  
   return <img src={animal.image} alt={animal.name} />;
 }
 
